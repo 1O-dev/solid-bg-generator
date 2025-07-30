@@ -13,3 +13,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.myProp1{
+  transition: aspect-ratio 0.4s;
+}
