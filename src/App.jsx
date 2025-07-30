@@ -57,6 +57,12 @@ function App() {
     },
   ];
 
+  const chromas = [
+    {color:"#04F404",label:"Green Chroma"},
+    {color:"#0047bb",label:"Blue Chroma"},
+    {color:"#FF0000",label:"Red Chroma"}
+  ]
+
 
   function handleRecent(){[]
     if(color === recent[recent.length-1]) return;
@@ -67,7 +73,9 @@ function App() {
       
   }
 
-  useEffect(()=>{localStorage.setItem("recent",recent.join())},[recent])
+  useEffect(()=>{localStorage.setItem("recent",recent.join(","))},[recent])
+
+
   
 
   const handleDownload = () => {
@@ -99,7 +107,7 @@ function App() {
       <h1 className="text-4xl font-bold capitalize">solid background Generator</h1>
       <div className="flex items-center justify-around w-full">
         <div className="h-100 w-120 border-2 rounded-2xl rounded-tl-none relative p-4 grid place-items-center">
-          <p className="top-[-15px] absolute bg-[#3954c0] left-1 px-1 ">Preview</p>
+          <p className="top-[-15px] absolute bg-[#3954c0] left-1 px-1 ">Preview {aspectRatios[selectedI].width } X  {aspectRatios[selectedI].height}</p>
           <div
             className={` myProp1 grid place-items-center w-full rounded-md  ${aspectRatios[selectedI].tailwindVal} `}
             style={{ backgroundColor: color }}
@@ -112,11 +120,19 @@ function App() {
               <input type="color" className="h-10 rounded-md" value={color} onChange={(e)=>setColor(e.target.value)} />
             </div>
 
+            <div className=" flex flex-1 gap-x-2">
+              {
+                chromas.map((elem,i)=>(
+                  <button key={i} onClick={()=>setColor(elem.color)} style={{ backgroundColor: elem.color }} className={`flex flex-1 rounded-md p-1 flex-col ${i === 1 && "text-zinc-300"}`}><span>{elem.label}</span><span className="text-sm opacity-65">{elem.color}</span></button>
+                ))
+              }
+            </div>
+
             <div className="space-y-2">
               <h1 className="text-lg">Recent</h1>
               <div className="flex gap-x-2">
                 {recent.map((elem,i)=>(
-                  <div key={i} onClick={()=>setColor(elem)} className="size-8 bg-black rounded-full border-2 border-zinc-600" style={{ backgroundColor: elem }} title={elem}></div>
+                  <div key={i} onClick={()=>setColor(elem)}  className="size-8 bg-black rounded-full border-2 border-zinc-600" style={{ backgroundColor: elem }} title={elem}></div>
                 ))}
               </div>
             </div>
@@ -124,16 +140,16 @@ function App() {
           </div>
       </div>
 
-      <button onClick={handleDownload}> dtest</button> // to test downloads only
+      <button onClick={handleDownload}> dtest</button> 
     </div>
   );
 }
 ////TODO:
 //  !fix UI include responsivety
-//  !recent colors
-//  !cromas
 //  !add custom
 //  ?more aspcets
+// *cromas
+// *recent colors
 // *good resolotion
 // *animations
 
