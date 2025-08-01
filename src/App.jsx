@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { MdFileDownload } from "react-icons/md";
 
 function App() {
-  localStorage.setItem("recent" , [])
+  localStorage.setItem("recent" , ["#000"])
   const [color, setColor] = useState("#eeeeee");
   const [selectedI, setSelectedI] = useState(3);
   const [recent, setRecent] = useState(
