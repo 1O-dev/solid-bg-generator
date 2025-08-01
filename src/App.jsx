@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { MdFileDownload } from "react-icons/md";
 
 function App() {
+  localStorage.setItem("recent" , [])
   const [color, setColor] = useState("#eeeeee");
   const [selectedI, setSelectedI] = useState(3);
   const [recent, setRecent] = useState(
-    localStorage.getItem("recent").split(",") || ["#EE3", "#20f", "#908"]
-  );
+    localStorage.getItem("recent").split(","));
 
   const aspectRatios = [
     {
