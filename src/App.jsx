@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import { MdFileDownload } from "react-icons/md";
 
 function App() {
-  localStorage.setItem("recent" , ["#000"])
   const [color, setColor] = useState("#eeeeee");
   const [selectedI, setSelectedI] = useState(3);
-  const [recent, setRecent] = useState(
-    localStorage.getItem("recent").split(","));
+  const [recent, setRecent] = useState( localStorage.getItem("recent").split(",") );
 
   const aspectRatios = [
     {
@@ -103,7 +101,7 @@ function App() {
 
   return (
     <div className="flex items-center justify-center h-screen flex-col space-y-10">
-      <h1 className="text-4xl font-bold capitalize">
+      <h1 className="text-4xl font-bold capitalize max-md:scale-60">
         solid background Generator
       </h1>
       <div className="flex items-center justify-around w-full">
@@ -118,7 +116,7 @@ function App() {
           ></div>
         </div>
 
-        <div className="h-100 w-120 bg-white text-black rounded-2xl p-4 space-y-4 max-sm:min-h-100">
+        <div className="h-100 w-120 bg-white text-black rounded-2xl p-4 space-y-4  max-md:scale-80">
           <div className="flex items-center gap-x-5">
             <input
               type="text"
@@ -169,7 +167,7 @@ function App() {
 
           <div>
             <div className="w-full overflow-hidden overflow-x-scroll py-2 [&::-webkit-scrollbar]:w-1  [&::-webkit-scrollbar-thumb]:bg-gray-300  [&::-webkit-scrollbar-thumb]:rounded-full">
-              <div className="grid grid-row-1 grid-cols-8 gap-2 w-200 ">
+              <div className="grid grid-row-1 grid-cols-6 gap-2 w-180 ">
                 {aspectRatios.map((elem, i) => (
                   <div
                     key={i}
